@@ -1,0 +1,161 @@
+[{
+    "id": 0,
+    "disp": "Best",
+    "desc_hover": "Hint: 3 clicks are enough.",
+    "color_hover": "#FFFF82",
+    "color_click": "#FFFF58",
+    "clicked": 0,
+    "on_click_remove": [],
+    "range": [0]
+}, {
+    "id": 1,
+    "disp": "Female",
+    "query_string": "person.sex === 'female'",
+    "desc_hover": "Female Passengers",
+    "color_hover": "#F1DBF5",
+    "color_click": "#D8AADF",
+    "clicked": 0,
+    "on_click_remove": [2],
+    "range": [1, 2]
+}, {
+    "id": 2,
+    "disp": "Male",
+    "query_string": "person.sex === 'male'",
+    "desc_hover": "Male Passengers",
+    "color_hover": "#F1DBF5",
+    "color_click": "#D8AADF",
+    "clicked": 0,
+    "on_click_remove": [1],
+    "range": [1, 2]
+}, {
+    "id": 3,
+    "disp": "Class 1",
+    "query_string": "person.pclass === '1'",
+    "desc_hover": "1st Class Passengers",
+    "color_hover": "#FFC387",
+    "color_click": "#FF9B39",
+    "clicked": 0,
+    "on_click_remove": [4, 5],
+    "range": [3, 4, 5]
+}, {
+    "id": 4,
+    "disp": "Class 2",
+    "query_string": "person.pclass === '2'",
+    "desc_hover": "2nd Class Passengers",
+    "color_hover": "#FFC387",
+    "color_click": "#FF9B39",
+    "clicked": 0,
+    "on_click_remove": [3, 5],
+    "range": [3, 4, 5]
+}, {
+    "id": 5,
+    "disp": "Class 3",
+    "query_string": "person.pclass === '3'",
+    "desc_hover": "3rd Class Passengers",
+    "color_hover": "#FFC387",
+    "color_click": "#FF9B39",
+    "clicked": 0,
+    "on_click_remove": [3, 4],
+    "range": [3, 4, 5]
+}, {
+    "id": 6,
+    "disp": "0-21",
+    "query_string": "person.age >= '0' && person.age <= '21'",
+    "desc_hover": "Passengers below 21 years old",
+    "color_hover": "#AAE3A7",
+    "color_click": "#7BCE77",
+    "clicked": 0,
+    "on_click_remove": [7, 8, 9],
+    "range": [6, 7, 8, 9]
+}, {
+    "id": 7,
+    "disp": "22-28",
+    "query_string": "person.age >= '22' && person.age <= '28'",
+    "desc_hover": "Passengers between 22-28 years old",
+    "color_hover": "#AAE3A7",
+    "color_click": "#7BCE77",
+    "clicked": 0,
+    "on_click_remove": [6, 8, 9],
+    "range": [6, 7, 8, 9]
+}, {
+    "id": 8,
+    "disp": "29-39",
+    "query_string": "person.age >= '29' && person.age <= '39'",
+    "desc_hover": "Passengers between 29-39 years old",
+    "desc_click": "",
+    "color_hover": "#AAE3A7",
+    "color_click": "#7BCE77",
+    "clicked": 0,
+    "on_click_remove": [6, 7, 9],
+    "range": [6, 7, 8, 9]
+}, {
+    "id": 9,
+    "disp": "40-80",
+    "query_string": "person.age >= '40' && person.age <= '80'",
+    "desc_hover": "Passengers between 40-80 years old",
+    "color_hover": "#AAE3A7",
+    "color_click": "#7BCE77",
+    "clicked": 0,
+    "on_click_remove": [6, 7, 8],
+    "range": [6, 7, 8, 9]
+}, {
+    "id": 10,
+    "disp": "No SibSp ",
+    "query_string": "person.sibsp === '0'",
+    "desc_hover": "No siblings or spouse aboard",
+    "color_hover": "#FF9A9A",
+    "color_click": "#F04949",
+    "clicked": 0,
+    "on_click_remove": [11, 12],
+    "range": [10, 11, 12]
+}, {
+    "id": 11,
+    "disp": "1 SibSp",
+    "query_string": "person.sibsp === '1'",
+    "desc_hover": "Sibling or spouse aboard",
+    "color_hover": "#FF9A9A",
+    "color_click": "#F04949",
+    "clicked": 0,
+    "on_click_remove": [10, 12],
+    "range": [10, 11, 12]
+}, {
+    "id": 12,
+    "disp": "2+ SibSp",
+    "query_string": "person.sibsp >= '2'",
+    "desc_hover": "Both sibling(s) and spouse aboard",
+    "color_hover": "#FF9A9A",
+    "color_click": "#F04949",
+    "clicked": 0,
+    "on_click_remove": [10, 11],
+    "range": [10, 11, 12]
+}, {
+    "id": 13,
+    "disp": "No ParCh",
+    "query_string": "person.parch === '0'",
+    "desc_hover": "No parent or children aboard",
+    "color_hover": "#B1D3F0",
+    "color_click": "#5796CA",
+    "clicked": 0,
+    "on_click_remove": [14, 15],
+    "range": [13, 14, 15]
+}, {
+    "id": 14,
+    "disp": "1 ParCh",
+    "query_string": "person.parch === '1'",
+    "desc_hover": "1 parent or children aboard",
+    "color_hover": "#B1D3F0",
+    "color_click": "#5796CA",
+    "clicked": 0,
+    "on_click_remove": [13, 15],
+    "range": [13, 14, 15]
+}, {
+    "id": 15,
+    "disp": "2+ ParCh",
+    "query_string": "person.parch >= '2'",
+    "desc_hover": "2 or more parent(s) or children(s) aboard",
+    "color_hover": "#B1D3F0",
+    "color_click": "#5796CA",
+    "clicked": 0,
+    "on_click_remove": [13, 14],
+    "range": [13, 14, 15]
+}]
