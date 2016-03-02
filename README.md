@@ -58,17 +58,20 @@ I gathered feedback from 3 different people. I asked them:
 + What is the main takeaway from this visualization?
 + Is there something complex in the graphic?
 
-Responses:
+Responses are shown below:
+
 1. Your chart looks good. I understand that it is about Titanic and the survival ratios. I think women are 
 more lucky in surviving than other groups. Travelling in a higher class also effects the survival ratio.
 My highest score was 96.53%. Am I on the right track? I think you should fix this part and give some more 
 feedback to user because I don't know the highest score. It can be 100% or something over 96%. You should inform me.
 Still, your visualization looks nice and informative. I didn't know that some groups survived with such a high percent.
+
 2. I couldn't read the very first text displayed on chart because it disappeared so fast. I didn't quite get the main 
 thing I guess. It took me a while to understand what the chart is about. As I figured out, your visualization is about 
 Titanic and the percent displayed in the middle explains a survival ratio, changing according to my selections. If I 
 understood it right, it looks like this is a very interesting chart. You let users to investigate Titanic passengers 
 and their survival ratios. I believe it will be a better chart, if you fix the problem I figured out.
+
 3. I liked your visualization. It was so fun playing around with different features and trying to increase the survival ratio.
 I knew a bit about the Titanic passengers so it's not a hard thing for me to find the group that has the highest ratio
 but you should include more things to "best" option. I mean you should inform people that doesn't know much about titanic.
