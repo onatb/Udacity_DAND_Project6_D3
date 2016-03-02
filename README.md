@@ -23,12 +23,11 @@ information between those passengers who survived and those who died.
 
 I considered using bar charts, which would explain the survival rate but I thought it would be an exploratory visualization 
 instead of an explanatory data visualization so I started investigating different kinds of visualizations and came up with
-an idea of using a different kind of donut chart. I influenced much from [Kerry Rodden's Sequences Sunburst] (www.bl.ocks.org/kerryrodden/7090426) 
-and [Nadieh Bremer’s Text on an Arc] (http://bl.ocks.org/nbremer/bf6d15082ea81ce69b55) visualizations.
+an idea of using a different kind of donut chart. I influenced much from [Kerry Rodden's Sequences Sunburst](http://bl.ocks.org/kerryrodden/7090426) 
+and [Nadieh Bremer’s Text on an Arc](http://bl.ocks.org/nbremer/bf6d15082ea81ce69b55) visualizations.
 Instead of narrating one part of the data set, I thought it would be a better idea to allow users to investigate the whole data set.
 So I created the initial visualization using d3.js, where each arc represents a feature and when these arcs come together, they form 
-a special type of donut chart. Each arc has it's own color and explanation on hover (I used [Color Brewer](www.colorbrewer2.org/)  
-website in order to make easily focusable features). 
+a special type of donut chart. Each arc has it's own color and explanation on hover. 
 
 Users can select groups as they wish. After each selection, survival ratio is displayed in the middle of the donut chart. 
 It is easy to understand which features are selected and what is the survival ratio of this selection. At this point, 
@@ -80,16 +79,16 @@ Overall, it's a great visualization about survival ratios of Titanic passengers.
 I noticed if you were a little girl travelling in first class and with 1 parent, you would survive with a 100% probability. So nice!
 
 #### Resources
-[Kaggle Titanic](www.kaggle.com/c/titanic) |
-[Wikipedia - Titanic] (www.en.wikipedia.org/wiki/Passengers_of_the_RMS_Titanic) |
-[Titanic: Behind the numbers] (www.optional.is/required/2012/04/25/titanic-visualized/) |
-[Placing Texts On Arcs] (www.visualcinnamon.com/2015/09/placing-text-on-arcs.html) |
-[Sequences Sunburst] (www.bl.ocks.org/kerryrodden/7090426) |
-[D3: Enter, Update, Exit] (www.medium.com/@c_behrens/enter-update-exit-6cafc6014c36#.jh54dwby2) |
-[Animations-Transitions With D3] (www.blog.visual.ly/creating-animations-and-transitions-with-d3-js/) |
-[Coffee Wheel] (www.jasondavies.com/coffee-wheel/) | 
-[Color Brewer] (www.colorbrewer2.org/) |
-[D3.js] (www.d3js.org/)
+[Kaggle Titanic](https://www.kaggle.com/c/titanic) |
+[Wikipedia - Titanic](https://en.wikipedia.org/wiki/Passengers_of_the_RMS_Titanic) |
+[Titanic: Behind the numbers](http://optional.is/required/2012/04/25/titanic-visualized/) |
+[Placing Texts On Arcs](http://www.visualcinnamon.com/2015/09/placing-text-on-arcs.html) |
+[Sequences Sunburst](http://bl.ocks.org/kerryrodden/7090426) |
+[D3: Enter, Update, Exit](https://medium.com/@c_behrens/enter-update-exit-6cafc6014c36#.jh54dwby2) |
+[Animations-Transitions With D3](http://blog.visual.ly/creating-animations-and-transitions-with-d3-js/) |
+[Coffee Wheel](https://www.jasondavies.com/coffee-wheel/) | 
+[Color Brewer](http://colorbrewer2.org/) |
+[D3.js](http://d3js.org/)
 
 ##### Data
 biostat.mc.vanderbilt.edu/wiki/pub/Main/DataSets/titanic3.xls
