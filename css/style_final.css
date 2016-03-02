@@ -1,22 +1,25 @@
 h1 {
   text-align: center;
   font-family: 'Courgette', sans-serif;
-  font-size: 26px;
+  font-size: 22px;
   color: #0E227E;
 }
-.first-run-text {
+#explanation-text
+{
   text-align: center;
   font-family: 'Courgette', sans-serif;
   font-size: 13px;
-  font-style: italic; 
+  font-style: italic;
+  font-weight: lighter;
   fill: #0E227E;
 }
 .best-text {
   text-align: center;
   font-family: 'Courgette', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-style: italic; 
-  fill: #0E227E;
+  font-weight: bold;
+  fill: #cb181d;
 }
   .mid-percent {
   text-align: center;
@@ -53,6 +56,11 @@ h1 {
 }
 .listText {
   fill: #6B6B6B;
+  font-size: 11px;
+  font-family: 'Courgette', sans-serif;
+}
+.inner-text {
+  fill: black;
   font-size: 11px;
   font-family: 'Courgette', sans-serif;
 }

@@ -45,6 +45,100 @@ function visualizer(titanic_data) {
     // control variable, tracks whether user finds 100% survival rate
     var hundred = 0;
 
+    //######### Added this inner_donut function after the first project review #########
+    
+    function inner_donut (results) {
+      //This function displays another donut chart inside the outer one
+
+      //Append the survival rate to the page
+      var result = 0;
+
+      results.forEach(function(d) {
+        if(d.disp === "Survived")
+          result = d.percent;
+      });
+
+      function fill_color (result) {
+        if(result <= 55) return "#92D288";
+        else if(result <= 80) return "#47A447";
+        else return "#116F31";
+      }
+      
+      svg.append("text")
+        .attr("class", "mid-percent")
+        .attr("text-anchor", "middle")
+        .attr("dy", -45)
+        .style("fill", fill_color(result))
+        .text(result + " %");
+
+      svg.append("text")
+        .attr("class", "mid-text")
+        .attr("text-anchor", "middle")
+        .attr("dy", -20)
+        .style("fill", fill_color(result))
+        .text("of the selected passengers survived");
+
+      // Help user find the max survival ratio by giving some hints according to their rate
+      var hint = ["", "Have you tried adding 'Female' and 'Class 1' ?", "Try more features, you will find the 100% soon", "Great job! So close to 100%. Have you tried adding '1 Parch'?", "Well Done!"];
+
+      svg.append("text")
+        .attr("class", "mid-hint")
+        .attr("text-anchor", "middle")
+        .attr("dy", 10)
+        .text(function() {
+          if(hundred === 0) {
+            if(result <= 55) return hint[1];
+            else if(result <= 80) return hint[2];
+            else if(result <=99) return hint[3];
+            else return hint[4];
+          } else
+            return hint[0];
+        });
+
+        // If user finds the 100% survival ratio, don'show hints anymore
+        if(result === "100.00") hundred =1;
+        debugger;
+
+      // Add a visual representation of the percent number. 
+      //In this case add another donut chart that actually shows the percents in graph
+      var inner_arc = d3.svg.arc()
+        .innerRadius(width * 0.9 / 2.5)
+        .outerRadius(width * 0.9 / 2.5 + 15);
+
+      var inner_pie = d3.layout.pie()
+        .sort(null)
+        .value(function(d) {
+          return d.freq;
+        });
+
+      svg.selectAll(".inner-arc")
+        .data(inner_pie(results))
+        .enter().append("path")
+        .attr("class", "inner-arc")
+        .attr("id", function(d, i) {
+          return "innerArc_" + i;
+        })
+        .attr("d", inner_arc)
+        .style("fill", function(d) {
+          if(d.data.disp === "Survived") return fill_color(result);
+          else return "#cccccc";
+        });
+
+      svg.selectAll(".inner-text")
+        .data(results)
+        .enter().append("text")
+        .attr("class", "inner-text")
+        .attr("x", 150) //Move the text from the start angle of the arc
+        .attr("dy", 12) //Move the text down
+        .append("textPath")
+        .attr("xlink:href", function(d, i) {
+          return "#innerArc_" + i;
+        })
+        .text(function(d) {
+          return d.disp;
+        });
+    }
+
     function calculate_percent (titanic_data, limbo) {
       // This function calculates the survival rate and appends the percent to the page
 
@@ -72,49 +166,11 @@ function visualizer(titanic_data) {
       });
       if(total !== 0) {
 
-        var result = (survived / total) * 100;
-        
-        //Append the survival rate to the page
-        svg.append("text")
-          .attr("class", "mid-percent")
-          .attr("text-anchor", "middle")
-          .attr("dy", -45)
-          .style("fill", function() {
-            if(result <= 55) return "#f03b20";
-            else if(result <= 80) return "#feb24c";
-            else return "#31a354";
-          })
-          .text(result.toFixed(2) + " %");
+        var percent = (survived / total) * 100;
+        percent = percent.toFixed(2);
 
-        svg.append("text")
-          .attr("class", "mid-text")
-          .attr("text-anchor", "middle")
-          .attr("dy", -20)
-          .style("fill", function() {
-            if(result <= 55) return "#f03b20";
-            else if(result <= 80) return "#feb24c";
-            else return "#31a354";
-          })
-          .text("of the selected passengers survived");
-
-        // Help user find the max survival ratio by giving some hints according to their rate
-        var hint = ["", "Have you tried adding 'Female' and 'Class 1' ?", "Try adding more features. Soon you will find the group with a 100% ratio", "Great job! You are so close to 100%. Have you tried adding '1 Parch'", "Well Done!"];
-
-        svg.append("text")
-          .attr("class", "mid-hint")
-          .attr("text-anchor", "middle")
-          .attr("dy", 10)
-          .text(function() {
-            if(hundred === 0) {
-              if(result <= 55) return hint[1];
-              else if(result <= 80) return hint[2];
-              else if(result <=99) return hint[3];
-              else return hint[4];
-            } else
-              return hint[0];
-          });
-          // If user finds the 100% survival ratio, don'show hints anymore
-          if(result === 100) hundred =1;
+        inner_donut([{"disp": "Survived", "freq": survived, "percent": percent},
+                {"disp": "Died", "freq": total - survived, "percent": 1 - percent}]);
       }
     }
 
@@ -137,6 +193,9 @@ function visualizer(titanic_data) {
         d3.select(".mid-text").remove();
         d3.select(".mid-hint").remove();
 
+        d3.selectAll(".inner-arc").remove();
+        d3.selectAll(".inner-text").remove();
+
         var ix = id_finder(limbo, d["id"]);
         var features = [];
         
@@ -156,9 +215,8 @@ function visualizer(titanic_data) {
           svg.append("text")
             .attr("class", "best-text")
             .attr("text-anchor", "middle")
-            .attr("dy", -80)
-            .style("font-size", "12px")
-            .text("Try Clicking Women, Children And Upper-class Passengers")
+            .attr("dy", -85)
+            .text("Try Women, Children And Upper-class")
             .transition()
             .duration(4000)
             .style("opacity", 0)
@@ -169,6 +227,10 @@ function visualizer(titanic_data) {
         d3.select(".mid-percent").remove();
         d3.select(".mid-text").remove();
         d3.select(".mid-hint").remove();
+
+        d3.selectAll(".inner-arc").remove();
+        d3.selectAll(".inner-text").remove();
+
         d.on_click_remove.forEach(function(i) {
           limbo.splice(id_finder(limbo, i), 1);
         });
@@ -266,49 +328,14 @@ function visualizer(titanic_data) {
         });
     }
 
-    function first_run (limbo) {
-      // This function shows the story on page load
-
-      var first_run_text = ["Although There Was Some Luck Involved In Surviving,", "Some Groups Of People", "Were More Likely To Survive Than Others,", "Try Clicking On Different Features", "Can You Figure Out", "Which Group Has The Highest Survival Rate ?"]
-      var y = -75;
-          
-      // Show the story
-      svg.selectAll(".first-run-text")
-        .data(first_run_text)
-        .enter()
-        .append("text")
-        .attr("class", "first-run-text")
-        .attr("text-anchor", "middle")
-        .attr("dy", function(d) {
-          return y += 20;
-        })
-        .style("opacity", 0)
-        .text(function(d) {
-          return d
-        })
-        .transition()
-        .duration(10000)
-        .style("opacity", 100);
-    }
-
     // Make a deep copy of olimbo so that these 2 will refer to different objects
     var limbo = JSON.parse(JSON.stringify(olimbo));
     
-    //  Show story for a while then create the chart and remove the story
-    first_run(limbo);
-
-    setTimeout(function(){
-      update_donut(limbo);
-      d3.selectAll(".first-run-text")
-        .transition()
-        .duration(9500)
-        .style("opacity", 0)
-        .remove();
-    }, 5000);
-
+    update_donut(limbo);
   }
+
   // Get the chart data
-  d3.json("titanic_final.json", function(error, json) {
+  d3.json("../data/titanic_final.json", function(error, json) {
     if (error) 
       return console.warn(error);
     else

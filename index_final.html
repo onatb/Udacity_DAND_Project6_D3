@@ -7,25 +7,38 @@
     <title>Titanic Survivors</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-    <link rel="stylesheet" type="text/css" href="style_final.css"/>
-    <script type="text/javascript" src="main_final.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style_final.css"/>
+    <script type="text/javascript" src="js/main_final.js"></script>
 
   </head>
 
   <body>
 
     <h1>Titanic Survivors</h1>
+
+    <div id="explanation-text">
+    
+      <p>
+        Although there was some luck involved in surviving, <br>
+        some groups of people were more likely to survive than others. <br>
+        Try clicking on different features and see the cummulative effect of the variables <br>
+        Can you figure out which variable group hikes the survival rate up to 100% ? <br>
+        Don't forget "Women and children first!"
+      </p>
+    
+    </div>
+    
     <div id="chart"></div>
 
     <script type="text/javascript">
       // Get titanic data and pass it to visualizer function
-      d3.csv("titanic.csv", function(error, csv) {
+      d3.csv("data/titanic.csv", function(error, csv) {
         if (error) 
           return console.warn(error);
         else
           visualizer(csv);
       });
-
+    
     </script>
 
   </body>
