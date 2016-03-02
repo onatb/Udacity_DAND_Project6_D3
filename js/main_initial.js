@@ -274,7 +274,7 @@ function visualizer(titanic_data) {
 
   }
   // Get the chart data
-  d3.json("titanic_initial.json", function(error, json) {
+  d3.json("../data/titanic_initial.json", function(error, json) {
     if (error) 
       return console.warn(error);
     else
