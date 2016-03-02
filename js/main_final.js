@@ -42,6 +42,9 @@ function visualizer(titanic_data) {
       .sort(null);
     // ### D3 chart setup ###
 
+    // control variable, tracks whether user finds 100% survival rate
+    var hundred = 0;
+
     function calculate_percent (titanic_data, limbo) {
       // This function calculates the survival rate and appends the percent to the page
 
@@ -76,13 +79,42 @@ function visualizer(titanic_data) {
           .attr("class", "mid-percent")
           .attr("text-anchor", "middle")
           .attr("dy", -45)
+          .style("fill", function() {
+            if(result <= 55) return "#f03b20";
+            else if(result <= 80) return "#feb24c";
+            else return "#31a354";
+          })
           .text(result.toFixed(2) + " %");
 
         svg.append("text")
           .attr("class", "mid-text")
           .attr("text-anchor", "middle")
           .attr("dy", -20)
+          .style("fill", function() {
+            if(result <= 55) return "#f03b20";
+            else if(result <= 80) return "#feb24c";
+            else return "#31a354";
+          })
           .text("of the selected passengers survived");
+
+        // Help user find the max survival ratio by giving some hints according to their rate
+        var hint = ["", "Have you tried adding 'Female' and 'Class 1' ?", "Try adding more features. Soon you will find the group with a 100% ratio", "Great job! You are so close to 100%. Have you tried adding '1 Parch'", "Well Done!"];
+
+        svg.append("text")
+          .attr("class", "mid-hint")
+          .attr("text-anchor", "middle")
+          .attr("dy", 10)
+          .text(function() {
+            if(hundred === 0) {
+              if(result <= 55) return hint[1];
+              else if(result <= 80) return hint[2];
+              else if(result <=99) return hint[3];
+              else return hint[4];
+            } else
+              return hint[0];
+          });
+          // If user finds the 100% survival ratio, don'show hints anymore
+          if(result === 100) hundred =1;
       }
     }
 
@@ -103,7 +135,8 @@ function visualizer(titanic_data) {
         d.clicked = 0;
         d3.select(".mid-percent").remove();
         d3.select(".mid-text").remove();
-        
+        d3.select(".mid-hint").remove();
+
         var ix = id_finder(limbo, d["id"]);
         var features = [];
         
@@ -127,7 +160,7 @@ function visualizer(titanic_data) {
             .style("font-size", "12px")
             .text("Try Clicking Women, Children And Upper-class Passengers")
             .transition()
-            .duration(2000)
+            .duration(4000)
             .style("opacity", 0)
             .remove();
           d.clicked = 0;
@@ -135,6 +168,7 @@ function visualizer(titanic_data) {
         d3.select(".text-hover").remove();
         d3.select(".mid-percent").remove();
         d3.select(".mid-text").remove();
+        d3.select(".mid-hint").remove();
         d.on_click_remove.forEach(function(i) {
           limbo.splice(id_finder(limbo, i), 1);
         });
@@ -267,14 +301,14 @@ function visualizer(titanic_data) {
       update_donut(limbo);
       d3.selectAll(".first-run-text")
         .transition()
-        .duration(7500)
+        .duration(9500)
         .style("opacity", 0)
         .remove();
     }, 5000);
 
   }
   // Get the chart data
-  d3.json("titanic_initial.json", function(error, json) {
+  d3.json("titanic_final.json", function(error, json) {
     if (error) 
       return console.warn(error);
     else

@@ -1,0 +1,58 @@
+h1 {
+  text-align: center;
+  font-family: 'Courgette', sans-serif;
+  font-size: 26px;
+  color: #0E227E;
+}
+.first-run-text {
+  text-align: center;
+  font-family: 'Courgette', sans-serif;
+  font-size: 13px;
+  font-style: italic; 
+  fill: #0E227E;
+}
+.best-text {
+  text-align: center;
+  font-family: 'Courgette', sans-serif;
+  font-size: 12px;
+  font-style: italic; 
+  fill: #0E227E;
+}
+  .mid-percent {
+  text-align: center;
+  font-family: 'Courgette', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+.mid-text {
+  text-align: center;
+  font-family: 'Courgette', sans-serif;
+  font-size: 15px;
+
+}
+.mid-hint {
+  text-align: center;
+  font-family: 'Courgette', sans-serif;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: lighter; 
+  fill: grey;
+}
+.text-hover {
+  text-align: center;
+  font-family: 'Courgette', sans-serif;
+  font-size: 12px;
+  fill: grey;
+}
+#chart {
+  text-align: center;
+}
+.listArc {
+  fill: white;
+  stroke: #AAAAAA;
+}
+.listText {
+  fill: #6B6B6B;
+  font-size: 11px;
+  font-family: 'Courgette', sans-serif;
+}
