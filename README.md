@@ -9,14 +9,16 @@ combinations of features to find the group with the highest survival rate.
 
 #### Design
 In my visualization, I used a different type of donut chart and in final version, I used color hue for feature types and
-for survival rate. I used a simple layout with a white background and avoid using complex components in order to keep the
-attention. There is a basic hierarchy in my visualization, in which similar features are listed side by side.
+color saturation for survival rate. It can be also said that size visual encoding is used for survival rate. I used a 
+simple layout with a white background and avoid using complex components in order to keep the attention. There is a basic
+hierarchy in my visualization, in which similar features are listed side by side.
 
 I downloaded the data set from the Vanderbilt University website, which is identical to Kaggle's Titanic data set. 
 The only difference is, Kaggle provides Titanic data set in two seperate parts because of it's competition purposes. 
 For minimizing data munging time I used Vanderbilt's data set.
 
-After downlading and cleaning the data, I came up with the question "Were some groups of people more likely to survive than others?"
+After downlading and cleaning the data, I came up with the question "Were some particular passenger groups more likely
+to survive than others?", in other words "Can some specific set of features push the survival rate upwards ?"
 Next step is to find a way to answer this question by highlighting some patterns so that my story conveys the overall 
 message to readers. In other words, I have to create a visualization that is  answering this question, by giving 
 information between those passengers who survived and those who died.
@@ -24,10 +26,8 @@ information between those passengers who survived and those who died.
 I considered using bar charts, which would explain the survival rate but I thought it would be an exploratory visualization 
 instead of an explanatory data visualization so I started investigating different kinds of visualizations and came up with
 an idea of using a different kind of donut chart. I influenced much from [Kerry Rodden's Sequences Sunburst](http://bl.ocks.org/kerryrodden/7090426) 
-and [Nadieh Bremer’s Text on an Arc](http://bl.ocks.org/nbremer/bf6d15082ea81ce69b55) visualizations.
-Instead of narrating one part of the data set, I thought it would be a better idea to allow users to investigate the whole data set.
-So I created the initial visualization using d3.js, where each arc represents a feature and when these arcs come together, they form 
-a special type of donut chart. Each arc has it's own color and explanation on hover. 
+, [Nadieh Bremer’s Text on an Arc](http://bl.ocks.org/nbremer/bf6d15082ea81ce69b55) and [Mike Bostock's Donut Chart](http://bl.ocks.org/mbostock/3887193) 
+visualizations. Instead of narrating one part of the data set, I thought it would be a better idea to allow users to investigate the whole data set. So I created the initial visualization using d3.js, where each arc represents a feature and when these arcs come together, they form a special type of donut chart. Each arc has it's own color and explanation on hover. 
 
 Users can select groups as they wish. After each selection, survival ratio is displayed in the middle of the donut chart. 
 It is easy to understand which features are selected and what is the survival ratio of this selection. At this point, 
@@ -44,9 +44,20 @@ After getting the feedback, I fixed some things in my visualization:
 - Added color on survival ratio.Red,  if it is below 55%, yellow between 55-80% and green for higher scores.
 - Changed the arc text "Best" to "Hint" to make it more understandable.
 
-A preview of the final visualization can be seen below or on bl.ocks [here](http://bl.ocks.org/onatb/9fe16602b54a8c285c24)
+A preview of my second trial can be seen below or on bl.ocks [here](http://bl.ocks.org/onatb/9fe16602b54a8c285c24)
 
-![Preview of the final visualization](http://imagizer.imageshack.us/v2/640x480q90/923/dgSrFh.png)
+![Preview of the second trial](http://imagizer.imageshack.us/v2/640x480q90/923/dgSrFh.png)
+
+Lastly, I got such valuable feedback from my project reviewer Daniel and fixed these things:
+
+- Included all necessary paths,
+- Added a visual representation of the percent number using another donut chart inside the original one,
+- Left the instructions on top of the page so users can easily read and understand the story,
+- Changed the color of "Hint" explanation to red in order to draw the readers attention.
+
+Here is the preview of my final trial and it is also available on bl.ocks [here](http://bl.ocks.org/onatb/1050f6013acd22fed4a0)
+
+![Preview of the final visualization](http://imagizer.imageshack.us/v2/640x480q90/923/Lm0KKt.png)
 
 #### Feedback
 I gathered feedback from 3 different people. I asked them:
@@ -78,12 +89,17 @@ By the way, it will be better if you change "Best" to "Hint" because "Best" opti
 Overall, it's a great visualization about survival ratios of Titanic passengers. I liked the idea of investigating whole thing myself.
 I noticed if you were a little girl travelling in first class and with 1 parent, you would survive with a 100% probability. So nice!
 
+Also my project reviewer Daniel gave me a bunch of worthy feedback which is shown below:
+
+- Well done, the visualization renders perfectly. However, it seems that the js, css and data were separated into their own folders after the code was finished since all paths were missing these folders. I had to add the folders to the path in order for the files to load. Most importantly, there should be a visual representation(chart) of the numbers show. First consider being clear about the main goal of the visualization, does it want to compare the correlation of each variable to survival? does it want to display the accumulative effect of the variables? show frequency of passengers that survived? After this, the appropriate chart should be chosen to represent the data, for example, a stacked bar chart, pie chart or dot chart are great ideas for the data at hand. You are free to decide where the chart should appear, I have a nice image of the inner area of the donut to display a pie chart as the reader clicks thru the options. Also you may plot more than one chart type, there is currently plenty of room around the donut as well. Most of the design choices are great, I would just advice to leave the instructions somewhere in the page and not have them fade away completely. Since many readers could have difficulties with their sight or don't speak English as a native tongue, making it somewhat difficult to read it in the given time. If you intent to draw the readers attention consider changing the color or font size.
+
 #### Resources
 [Kaggle Titanic](https://www.kaggle.com/c/titanic) |
 [Wikipedia - Titanic](https://en.wikipedia.org/wiki/Passengers_of_the_RMS_Titanic) |
 [Titanic: Behind the numbers](http://optional.is/required/2012/04/25/titanic-visualized/) |
 [Placing Texts On Arcs](http://www.visualcinnamon.com/2015/09/placing-text-on-arcs.html) |
 [Sequences Sunburst](http://bl.ocks.org/kerryrodden/7090426) |
+[Donut Chart](http://bl.ocks.org/mbostock/3887193) |
 [D3: Enter, Update, Exit](https://medium.com/@c_behrens/enter-update-exit-6cafc6014c36#.jh54dwby2) |
 [Animations-Transitions With D3](http://blog.visual.ly/creating-animations-and-transitions-with-d3-js/) |
 [Coffee Wheel](https://www.jasondavies.com/coffee-wheel/) | 
